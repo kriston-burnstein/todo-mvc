@@ -3,9 +3,9 @@ const Todo = require('../models/Todo')
 module.exports = {
     getTodos: async (req,res)=>{
         try{
-            const todoItems = await Todo.find()
-            const itemsLeft = await Todo.countDocuments({completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft})
+            const todoItems = await Todo.find() //find all documents in Todo
+            const itemsLeft = await Todo.countDocuments({completed: false}) //count all docs not done
+            res.render('todos.ejs', {todos: todoItems, left: itemsLeft}) //pass all the docs into the ejs file
         }catch(err){
             console.log(err)
         }
